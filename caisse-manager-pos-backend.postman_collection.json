@@ -1,0 +1,43 @@
+{
+  "info": {
+    "name": "Caisse Manager POS Backend Showcase",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "http://localhost:4000/api/v1/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"owner@demo.ma\",\n  \"password\": \"Demo12345!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Stores",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": "http://localhost:4000/api/v1/stores"
+      }
+    },
+    {
+      "name": "Create POS Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "http://localhost:4000/api/v1/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"storeId\": \"demo-store-rabat-hay-riad\",\n  \"tableNumber\": \"T12\",\n  \"channel\": \"WAITER_APP\",\n  \"items\": [\n    {\n      \"productId\": \"PRODUCT_ID_FROM_DB\",\n      \"quantity\": 2,\n      \"notes\": \"No onions\"\n    }\n  ]\n}"
+        }
+      }
+    }
+  ]
+}
